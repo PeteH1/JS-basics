@@ -86,21 +86,44 @@ const getUsers = () => {
             const users = res.data.data;
             getOutput.innerHTML = ""; // blanks output field
             for (let user of users) {
-                const userContainer = document.createElement("div");
+                const userCol = document.createElement("div");
+                userCol.classList.add("col");
+
+                const userCard = document.createElement("div");
+                userCard.classList.add("card");
+
+                const userBody = document.createElement("div");
+                userBody.classList.add("card-body");
 
                 const userName = document.createElement("p");
                 userName.innerText = `Name: ${user.first_name} ${user.last_name}`;
-                userContainer.appendChild(userName);
+                userBody.appendChild(userName);
 
                 const userEmail = document.createElement("p");
                 userEmail.innerText = `Email: ${user.email}`;
-                userContainer.appendChild(userEmail);
+                userBody.appendChild(userEmail);
 
                 const userAvatar = document.createElement("img");
                 userAvatar.src = `${user.avatar}`;
-                userContainer.appendChild(userAvatar);
+                userBody.appendChild(userAvatar);
 
-                getOutput.appendChild(userContainer);
+                const userDelete = document.createElement("button");
+                userDelete.innerText = "Delete";
+                userDelete.classList.add("btn", "btn-danger");
+                // Won't work because ReqRes API only resonds with 204 if you send
+                // DELETE request to URL ending in 2 instead of user.id
+                userDelete.addEventListener("click", () => {
+                    axios
+                        .delete(`https://reqres.in/api/users/${user.id}`)
+                        .then(res => getUsers())
+                        .catch(err => console.error(err))
+                });
+                userBody.appendChild(userDelete);
+
+                userCard.appendChild(userBody);
+                userCol.appendChild(userCard);
+
+                getOutput.appendChild(userCol);
             }
         })
         .catch(err => console.error(err));

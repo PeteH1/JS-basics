@@ -16,31 +16,33 @@
 
 <body>
     <main class="container">
-        <section>
-            <h2>POST/Create user</h2>
-            <form id="createForm">
-                <label for="userName" class="form-label">Name:</label>
-                <input type="text" class="form-control" name="userName" id="userName">
-                <label for="userJob" class="form-label">Job:</label>
-                <input type="text" class="form-control" name="userJob" id="userJob">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+        <section class="row">
+            <div class="col">
+                <h2>POST/Create user</h2>
+                <form id="createForm">
+                    <label for="userName" class="form-label">Name:</label>
+                    <input type="text" class="form-control" name="userName" id="userName">
+                    <label for="userJob" class="form-label">Job:</label>
+                    <input type="text" class="form-control" name="userJob" id="userJob">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+
+            <div class="col">
+                <h2>Register User</h2>
+                <form id="registerForm">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="text" class="form-control" name="email" id="email">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" class="form-control" name="password" id="password">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
         </section>
 
-        <section>
-            <h2>Register User</h2>
-            <form id="registerForm">
-                <label for="email" class="form-label">Email:</label>
-                <input type="text" class="form-control" name="email" id="email">
-                <label for="password" class="form-label">Password:</label>
-                <input type="password" class="form-control" name="password" id="password">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </section>
-
-        <section>
+        <section class="row">
             <h2>GET users</h2>
-            <div id="getOutput">
+            <div id="getOutput" class="row row-cols-3">
 
             </div>
         </section>
